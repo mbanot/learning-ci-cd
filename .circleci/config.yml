@@ -35,7 +35,7 @@ jobs:
           command: "echo world"
   print_my_name:
     docker: 
-      - image:
+      - image: circleci/node:13.8.0
     steps:
       - run: echo $MY_NAME_VAR
 
