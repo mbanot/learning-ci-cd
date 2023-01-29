@@ -73,19 +73,14 @@ jobs:
   #     - print_pipeline_id:
   #         id: $CIRCLE_WORKFLOW_ID
 
-  print_error:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: cat asas.txt
-
   failover:
     docker:
       - image: circleci/node:13.8.0
     steps:
-        - run: 
-            command: echo "FAILED TO RUN COMMAND ABOVE"
-            when: on_fail
+      - run: cat asas.txt
+      - run: 
+          command: echo "FAILED TO RUN COMMAND ABOVE"
+          when: on_fail
 
 
 # Invoke jobs via workflows
@@ -105,5 +100,4 @@ workflows:
       # - print_output_file:
       #     requires: [save_hello_world_output]
       # - print_pipeline
-      - print_error
       - failover
