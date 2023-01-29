@@ -44,16 +44,16 @@ jobs:
     steps:
       - run: echo "hello world" > output.txt
       - persist_to_workspace:
-        root: /temp/workspace
-        path: output.txt
+          root: ~/
+          path: output.txt
 
   print_output_file:
     docker:
       - image: circleci/node:13.8.0
     steps: 
       - attach_workspace:
-        at: /temp/workspace
-      - run: echo /temp/workspace/output.txt 
+          at: ~/
+      - run: cat ~/output.txt 
 
 
 # Invoke jobs via workflows
