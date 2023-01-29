@@ -45,8 +45,7 @@ jobs:
       - run: echo "hello world" > output.txt
       - persist_to_workspace:
         root: /temp/workspace
-        paths:
-          - output.txt
+        path: output.txt
 
   print_output_file:
     docker:
