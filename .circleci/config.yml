@@ -71,8 +71,8 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      sayHello:
-        to: "using say hello"
+      - sayHello:
+          to: "using say hello"
 
 
 # Invoke jobs via workflows
