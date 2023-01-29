@@ -77,7 +77,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo assa.txt
+      - run: cat assa.txt
       - run: 
           name: on error
           command: echo "FAILED TO RUN COMMAND ABOVE"
