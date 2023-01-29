@@ -4,14 +4,14 @@ version: 2.1
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
-commands:
-  print_pipeline_id:
-    description: "Echo the pipeline id using commands"
-    parameters:
-      id:
-        type: string
-    steps:
-      - run: echo << parameters.id >>
+# commands:
+#   print_pipeline_id:
+#     description: "Echo the pipeline id using commands"
+#     parameters:
+#       id:
+#         type: string
+#     steps:
+#       - run: echo << parameters.id >>
 jobs:
   # say-hello:
   #   # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -66,12 +66,25 @@ jobs:
   #         at: ~/
   #     - run: cat ~/output.txt 
 
-  print_pipeline:
+  # print_pipeline:
+  #   docker:
+  #     - image: circleci/node:13.8.0
+  #   steps:
+  #     - print_pipeline_id:
+  #         id: $CIRCLE_WORKFLOW_ID
+
+  print_error:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - print_pipeline_id:
-          id: $CIRCLE_WORKFLOW_ID
+      - run: cat asas.txt
+
+  failover:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo "FAILED TO RUN COMMAND ABOVE"
+    when: on_fail
 
 
 # Invoke jobs via workflows
@@ -90,4 +103,5 @@ workflows:
       # - save_hello_world_output
       # - print_output_file:
       #     requires: [save_hello_world_output]
-      - print_pipeline
+      # - print_pipeline
+      - print_error
