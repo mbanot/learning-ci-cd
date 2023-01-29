@@ -83,8 +83,9 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "FAILED TO RUN COMMAND ABOVE"
-    when: on_fail
+        - run: 
+            command: echo "FAILED TO RUN COMMAND ABOVE"
+            when: on_fail
 
 
 # Invoke jobs via workflows
