@@ -107,7 +107,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           # You can get this ID in the section where you registered the SSH Key
-          fingerprints: ["b3:3d:d4:20:e5:6b:d1:9f:09:17:52:a7:44:70:93:55"] 
+              fingerprints: ["b3:3d:d4:20:e5:6b:d1:9f:09:17:52:a7:44:70:93:55"] 
       - run:
           name: Install Ansible
           command: |
@@ -135,5 +135,5 @@ workflows:
       #     requires: [save_hello_world_output]
       # - print_pipeline
       # - failover
-      # - create_infrastructure
-      - configure_infrastructure
+      - create_infrastructure
+      # - configure_infrastructure
