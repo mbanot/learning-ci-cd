@@ -135,5 +135,5 @@ workflows:
       #     requires: [save_hello_world_output]
       # - print_pipeline
       # - failover
-      - create_infrastructure
-      # - configure_infrastructure
+      # - create_infrastructure
+      - configure_infrastructure
