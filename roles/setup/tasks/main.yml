@@ -1,0 +1,45 @@
+---
+- name: "update packages."
+  become: yes
+  yum:
+    update_cache: yes
+  # apt:
+  #   update_cache: yes
+
+# - name: "upgrade packages"
+#   become: yes
+#   yum:
+#     upgrade: yes
+
+- name: Install nodejs
+  yum:
+    name: nodejs-8.*
+    state: present
+
+# - name: Install npm
+#   yum:
+#     name: npm
+#     state: present
+
+- name: install pm2
+  become: yes
+  npm:
+    name: pm2@3.2.2
+    global: yes
+    production: yes
+    state: present
+
+- name: create a ~/web directory
+  shell: mkdir ~/web
+  # file:
+  #   path: ~/web
+  #   state: directory
+
+- name: copy index test page from files/index.js to ~/web/index.js
+  template:
+    src:  "files/index.js"
+    dest: "~/web/index.js"
+
+- name: start the server using pm
+  shell: pm2 start ~/web/index.js -f
+    
