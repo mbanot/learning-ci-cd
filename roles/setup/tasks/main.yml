@@ -1,25 +1,26 @@
 ---
 - name: "update packages."
   become: yes
-  yum:
-    update_cache: yes
-  # apt:
+  # yum:
   #   update_cache: yes
+  apt:
+    update_cache: yes
 
-# - name: "upgrade packages"
-#   become: yes
-#   yum:
-#     upgrade: yes
+- name: "upgrade packages"
+  become: yes
+  yum:
+    upgrade: yes
 
 - name: Install nodejs
-  yum:
+  # yum:
+  apt:
     name: nodejs-8.*
     state: present
 
-# - name: Install npm
-#   yum:
-#     name: npm
-#     state: present
+- name: Install npm
+  apt:
+    name: npm
+    state: present
 
 - name: install pm2
   become: yes
