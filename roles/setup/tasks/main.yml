@@ -52,7 +52,7 @@
   tags: install-node
 
 - name: install pm2
-  become: yes
+  become: true
   shell: |
     npm install pm2 -g
   # become: true
