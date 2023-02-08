@@ -106,7 +106,7 @@ jobs:
         - run:
             name: Create Cloudformation Stack
             command: |
-            aws cloudformation deploy \
+              aws cloudformation deploy \
               --template-file cloudfront.yml \
               --stack-name production-distro \
               --parameter-overrides PipelineID="my-bucket-447442348308" \ # Name of the S3 bucket you created manually.
