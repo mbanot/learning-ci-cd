@@ -23,7 +23,7 @@
 #     state: present
 
 - name: Download nvm installer
-  get_url: url="https://raw.githubusercontent.com/creationix/nvm/v{{ nvm_version }}/install.sh" dest=~/nvm-installer.sh mode=u=rwx,g=r,o=x
+  get_url: url="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh" dest=~/nvm-installer.sh mode=u=rwx,g=r,o=x
   tags: install-nvm
 
 - name: Execute the nvm-installer.sh
@@ -49,7 +49,7 @@
   shell: |
     source ~/.bashrc
     nvm install "{{ node_version }}"
-    nvm use --delete-prefix "v{{ node_version }}" --silent
+    nvm use --delete-prefix "v0.39.3" --silent
   tags: install-node
 
 - name: install pm2
