@@ -6,10 +6,10 @@
   # apt:
     # update_cache: yes
 
-- name: "upgrade packages"
-  become: yes
-  yum:
-    upgrade: yes
+# - name: "upgrade packages"
+#   become: yes
+#   yum:
+#     upgrade: yes
 
 - name: Install npm
   yum:
