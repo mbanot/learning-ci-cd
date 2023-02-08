@@ -11,16 +11,16 @@
 #   yum:
 #     upgrade: yes
 
+- name: Install npm
+  yum:
+    name: npm
+    state: present
+
 - name: Install nodejs
   yum:
   # apt:
     name: nodejs
     state: present
-
-# - name: Install npm
-#   apt:
-#     name: npm
-#     state: present
 
 - name: install pm2
   become: yes
