@@ -48,7 +48,7 @@
 - name: Install node
   shell: |
     source ~/.bashrc
-    nvm install 16
+    nvm install 8
     nvm use --delete-prefix "v0.39.3" --silent
   tags: install-node
 
