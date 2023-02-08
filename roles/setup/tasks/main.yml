@@ -64,10 +64,10 @@
     # state: present
 
 - name: create a ~/web directory
-  shell: mkdir ~/web
-  # file:
-  #   path: ~/web
-  #   state: directory
+  # shell: mkdir ~/web
+  file:
+    path: ~/web
+    state: directory
 
 - name: copy index test page from files/index.js to ~/web/index.js
   template:
