@@ -52,10 +52,12 @@
   tags: install-node
 
 - name: install pm2
+  shell: |
+    npm -i -g pm2
   # become: true
-  npm:
-    name: pm2
-    global: yes
+  # npm:
+  #   name: pm2
+  #   global: yes
     # production: yes
     # state: present
 
