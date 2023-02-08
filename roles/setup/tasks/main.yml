@@ -52,12 +52,12 @@
   tags: install-node
 
 - name: install pm2
-  become: true
+  # become: true
   npm:
     name: pm2
     global: yes
-    production: yes
-    state: present
+    # production: yes
+    # state: present
 
 - name: create a ~/web directory
   shell: mkdir ~/web
