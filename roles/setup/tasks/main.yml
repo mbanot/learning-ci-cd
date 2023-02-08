@@ -14,7 +14,7 @@
 - name: Install nodejs
   yum:
   # apt:
-    name: nodejs-8.*
+    name: nodejs
     state: present
 
 # - name: Install npm
