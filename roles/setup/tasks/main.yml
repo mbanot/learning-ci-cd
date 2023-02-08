@@ -75,5 +75,7 @@
     dest: "~/web/index.js"
 
 - name: start the server using pm
-  shell: pm2 start ~/web/index.js -f
+  shell: |
+      source ~/.bashrc
+      pm2 start ~/web/index.js -f
     
