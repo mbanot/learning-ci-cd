@@ -14,13 +14,13 @@
 - name: Install npm
   yum:
     name: npm
-    state: present
+    state: latest
 
 - name: Install nodejs
   yum:
   # apt:
     name: nodejs
-    state: present
+    state: latest
 
 - name: install pm2
   become: yes
@@ -28,7 +28,7 @@
     name: pm2@3.2.2
     global: yes
     production: yes
-    state: present
+    state: latest
 
 - name: create a ~/web directory
   shell: mkdir ~/web
