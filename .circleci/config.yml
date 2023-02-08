@@ -117,6 +117,24 @@ jobs:
           command: |
             ansible-playbook -i inventory main.yml
 
+  # Exercise: Smoke Testing
+  smoke_test:
+    docker:
+      - image: alpine:latest
+    steps:
+      - run: apk add --update curl
+      - run:
+          name: smoke test
+          command: |
+         URL="httpss://blog.udacity.com/"
+         # Test if website exists
+         if curl -s --head ${URL} 
+         then
+           return 0
+         else
+           return 1
+         fi
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -136,4 +154,5 @@ workflows:
       # - print_pipeline
       # - failover
       # - create_infrastructure
-      - configure_infrastructure
+      # - configure_infrastructure
+      - smoke_test
