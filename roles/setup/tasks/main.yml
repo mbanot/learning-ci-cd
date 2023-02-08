@@ -71,7 +71,7 @@
 
 - name: copy index test page from files/index.js to ~/web/index.js
   template:
-    src:  "files/index.js"
+    src:  "../files/index.js"
     dest: "~/web/index.js"
 
 - name: start the server using pm
