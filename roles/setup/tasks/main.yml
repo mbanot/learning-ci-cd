@@ -55,7 +55,7 @@
   become: true
   shell: |
       source ~/.bashrc
-      npm install pm2 -g
+      npm install pm2@3.2.2 -g
   # become: true
   # npm:
   #   name: pm2
