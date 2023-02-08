@@ -57,7 +57,7 @@
     name: pm2
     global: yes
     production: yes
-    state: latest
+    state: present
 
 - name: create a ~/web directory
   shell: mkdir ~/web
