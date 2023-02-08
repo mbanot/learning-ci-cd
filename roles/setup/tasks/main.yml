@@ -49,8 +49,6 @@
   shell: |
     source ~/.bashrc
     nvm install 8
- 
- #   nvm use --delete-prefix "v0.39.3" --silent
   tags: install-node
 
 - name: install pm2
@@ -59,7 +57,7 @@
     name: pm2@3.2.2
     global: yes
     production: yes
-    state: present
+    state: latest
 
 - name: create a ~/web directory
   shell: mkdir ~/web
