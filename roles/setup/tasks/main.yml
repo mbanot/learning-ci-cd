@@ -52,9 +52,9 @@
   tags: install-node
 
 - name: install pm2
-  become: yes
+  become: true
   npm:
-    name: pm2@3.2.2
+    name: pm2
     global: yes
     production: yes
     state: latest
