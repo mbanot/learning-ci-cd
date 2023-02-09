@@ -116,7 +116,7 @@ jobs:
               aws cloudformation deploy \
                 --template-file cloudfront.yml \
                 --stack-name production-distro \
-                --parameter-overrides PipelineID="my-bucket-447442348308" \ 
+                --parameters PipelineID="my-bucket-447442348308" \ 
                 --tags project=udapeople &
 
   # Exercise: Config and Deployment
