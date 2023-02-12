@@ -1,8 +1,4 @@
 Parameters:
-  MyBucketName:
-    Description: Name of manually created bucket
-    Type: String
-    Default: my-bucket-447442348308
 # New Bucket name
 MyBucketName:
   Description: Existing Bucket name
