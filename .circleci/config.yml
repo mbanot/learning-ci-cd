@@ -103,21 +103,21 @@ jobs:
         - image: amazon/aws-cli
       steps:
         - checkout
-        # - run:
-        #     name: Create Cloudformation Stack
-        #     command: |
-        #       aws cloudformation deploy \
-        #         --template-file template.yml \
-        #         --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:7} \
-        #         --region us-east-1
         - run:
-            name: create cloudfront cloudformation stack
+            name: Create Cloudformation Stack
             command: |
               aws cloudformation deploy \
-                --template-file cloudfront.yml \
-                --stack-name production-distro \
-                --parameters PipelineID="my-bucket-447442348308" \ 
-                --tags project=udapeople &
+                --template-file template.yml \
+                --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:7} \
+                --region us-east-1
+#         - run:
+#             name: create cloudfront cloudformation stack
+#             command: |
+# aws cloudformation deploy \
+# --template-file cloudfront.yml \
+# --stack-name production-distro \
+# --parameter-overrides PipelineID="my-bucket-447442348308" \ 
+# --tags project=udapeople &
 
   # Exercise: Config and Deployment
   configure_infrastructure: 
@@ -136,6 +136,20 @@ jobs:
           name: Run Playbook and Configure server
           command: |
             ansible-playbook -i inventory main.yml
+  create_and_deploy_front_end:
+    docker: 
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run:
+          name: Execute bucket.yml - Create Cloudformation Stack
+          command: |
+            aws cloudformation deploy \
+            --template-file ../bucket.yml \
+            --stack-name stack-create-bucket-${CIRCLE_WORKFLOW_ID:0:7} \
+            --parameter-overrides MyBucketName="mybucket-${CIRCLE_WORKFLOW_ID:0:7}"
+    # Uncomment the step below if yoou wish to upload all contents of the current directory to the S3 bucket
+      - run: aws s3 sync . s3://mybucket-${CIRCLE_WORKFLOW_ID:0:7} --delete
 
   # Exercise: Smoke Testing
   smoke_test:
@@ -180,7 +194,8 @@ workflows:
       #     requires: [save_hello_world_output]
       # - print_pipeline
       # - failover
-      - create_infrastructure
+      # - create_infrastructure
       # - configure_infrastructure
       # - smoke_test:
       #     requires: [create_infrastructure]
+      - create_and_deploy_front_end

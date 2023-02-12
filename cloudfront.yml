@@ -1,8 +1,9 @@
 Parameters:
 # Existing Bucket name
-PipelineID:
-  Description: Existing Bucket name
-  Type: String
+  PipelineID:
+    Description: Existing Bucket name
+    Type: String
+    Default: 'my-bucket-447442348308'
 Resources:
     CloudFrontOriginAccessIdentity:
       Type: "AWS::CloudFront::CloudFrontOriginAccessIdentity"
